@@ -24,8 +24,6 @@ imports =
 #   ./shellscripts.nix
     ./cachix.nix
       
-    ./home.nix
-    ./modules/email.home.nix
   ];
   
 #### GRAPHICAL ENVIRONMENT ####

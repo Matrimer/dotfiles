@@ -8,12 +8,13 @@
 
 #home-manager.users.mats = {
 #  /* The home.stateVersion option does not have a default and must be set */
-#  home.stateVersion = "23.05";
+  home.stateVersion = "23.05";
 #};
 
+#import = [ ./modules/email.home.nix ];
 
 home.sessionPath = [
-  "/$HOME/dotfiles/bin"
+  "/home/mats/dotfiles/bin"
 ];
 
 # Let Home Manager install and manage itself.
