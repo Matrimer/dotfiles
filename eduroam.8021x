@@ -1,0 +1,11 @@
+[Security]
+EAP-Method=PEAP
+EAP-Identity=anonymous@ru.nl
+EAP-PEAP-ServerDomainMask=radius.authenticatie.ru.nl
+EAP-PEAP-CACert=/var/lib/iwd/ru-cert.pem
+EAP-PEAP-Phase2-Method=MSCHAPV2
+EAP-PEAP-Phase2-Identity=s1103029@ru.nl
+EAP-PEAP-Phase2-Password-Hash=
+
+[Settings]
+AutoConnect=true

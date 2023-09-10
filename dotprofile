@@ -1,0 +1,3 @@
+# ~/.profile
+export PATH=/home/mats/dotfiles/bin:$PATH
+export MOZ_ENABLE_WAYLAND=1

@@ -1,0 +1,18 @@
+{ config, pkgs, ... }:
+{
+  # Setup home-manager user
+  home-manager.users.mats = { pkgs, ... }: {
+    home.packages = [
+      pkgs.atool pkgs.httpie ];
+    programs.bash.enable = true;
+  home.stateVersion = "23.05"; # Not set by default
+  };
+  home-manager.useUserPackages = true; # packages in /etc/profiles instead of $HOME/.nix-profile
+  home-manager.useGlobalPkgs = true;
+  #imports =
+  #[
+  #home/astroid.nix
+  #home/git.nix
+  #];    
+}
+

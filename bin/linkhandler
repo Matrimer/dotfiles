@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# Forked from Luke Smith voidrice
+#
+# Feed script a url or file location.
+# If an image, it will view in nsxiv,
+# if a video or gif, it will view in mpv
+# if a music file or pdf, it will download,
+# otherwise it opens link in browser.
+
+# LICENCE: GNU GPL v3
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+if [ -z "$1" ]; then
+	url="$(xclip -o)"
+else
+	url="$1"
+fi
+
+case "$url" in
+	*mkv|*webm|*mp4|*youtube.com/watch*|*youtube.com/playlist*|*youtube.com/shorts*|*youtu.be*|*hooktube.com*|*bitchute.com*|*videos.lukesmith.xyz*|*odysee.com*)
+		setsid -f mpv -quiet "$url" >/dev/null 2>&1 ;;
+	*png|*jpg|*jpe|*jpeg|*gif|*webp)
+		curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")" && nsxiv -a "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")"  >/dev/null 2>&1 & ;;
+	*pdf|*cbz|*cbr)
+		curl -sL "$url" > "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")" && zathura "/tmp/$(echo "$url" | sed "s/.*\///;s/%20/ /g")"  >/dev/null 2>&1 & ;;
+	*mp3|*flac|*opus|*mp3?source*)
+		qndl "$url" 'curl -LO'  >/dev/null 2>&1 ;;
+	*)
+		[ -f "$url" ] && setsid -f "$TERMINAL" -e "$EDITOR" "$url" >/dev/null 2>&1 || setsid -f "$BROWSER" "$url" >/dev/null 2>&1
+esac
