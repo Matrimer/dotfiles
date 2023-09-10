@@ -3,13 +3,14 @@
 # and in the NixOS manual (accessible by running `nixos-help`).
 { config, pkgs, ... }:
 {
+  # Enable flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 imports =
   [ 
     # Auto-generated
     ./hardware-configuration.nix
     # Local
     ./system.nix
-    ./home-manager-module.nix
     ./utpad.nix
 
     ./modules/audio.nix
@@ -22,18 +23,16 @@ imports =
     ./modules/xorg.nix
 #   ./shellscripts.nix
     ./cachix.nix
+      
+    ./home.nix
+    ./modules/email.home.nix
   ];
   
 #### GRAPHICAL ENVIRONMENT ####
-# Wayland compositors
-programs.hyprland = {
-  enable = true;
-  xwayland.enable = true;
-};
-xdg.portal = { # Needed for hyprland
-  enable = true;
-  extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-};
+#xdg.portal = { # Needed for hyprland
+#  enable = true;
+#  extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+#};
 # X11 window manager
 services.xserver.windowManager.bspwm = {
   enable = true;

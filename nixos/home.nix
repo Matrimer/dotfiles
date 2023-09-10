@@ -3,15 +3,17 @@
 {
 # Home Manager needs a bit of information about you and the
 # paths it should manage.
-home.username = "mats";
-home.homeDirectory = "/home/mats";
+#home.username = "mats";
+#home.homeDirectory = "/home/mats";
+
+#home-manager.users.mats = {
+#  /* The home.stateVersion option does not have a default and must be set */
+#  home.stateVersion = "23.05";
+#};
+
 
 home.sessionPath = [
-  "$HOME/.local/bin"
-  "/home/mats/dotfiles/bin"
-];
-
-home.packages = [
+  "/$HOME/dotfiles/bin"
 ];
 
 # Let Home Manager install and manage itself.
