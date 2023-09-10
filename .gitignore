@@ -1,2 +1,4 @@
 inspiration
 src
+nixos/cachix
+nixos/cachix.nix
