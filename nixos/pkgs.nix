@@ -30,14 +30,14 @@ in
     unzip
     freetube
 
-    ## WAYBAR
-    (waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true "]; }))
-    swaybg # Wayland background setter
 
     # Wayland
     wl-clipboard
     ydotool
     grim #screenshot util
+    wbg # wayland background
+    ## WAYBAR
+    (waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true "]; }))
     
     networkmanagerapplet
 

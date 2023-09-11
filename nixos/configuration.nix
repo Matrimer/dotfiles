@@ -16,6 +16,7 @@ imports =
     ./modules/audio.nix
     ./modules/xdg.nix
     ./modules/wireless.nix
+    ./modules/laptop.nix
 
     ./pkgs.nix
 
