@@ -13,9 +13,10 @@
 # You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 basename="${1%.*}"
+READER="zathura"
 
 case "${*}" in
-	*.tex|*.sil|*.m[dse]|*.[rR]md|*.mom|*.[0-9]) target="$(getcomproot "$1" || echo "$1")" ; setsid -f xdg-open "${target%.*}".pdf >/dev/null 2>&1 ;;
+	*.tex|*.sil|*.m[dse]|*.[rR]md|*.mom|*.[0-9]) target="$(getcomproot "$1" || echo "$1")" ; setsid -f $READER "${target%.*}".pdf >/dev/null 2>&1 ;;
 	*.html) setsid -f "$BROWSER" "$basename".html >/dev/null 2>&1 ;;
 	*.sent) setsid -f sent "$1" >/dev/null 2>&1 ;;
 esac
