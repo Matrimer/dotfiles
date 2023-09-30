@@ -17,6 +17,7 @@ imports =
     ./modules/xdg.nix
     ./modules/wireless.nix
     ./modules/laptop.nix
+    ./modules/nvidia.nix
 
     ./pkgs.nix
 
