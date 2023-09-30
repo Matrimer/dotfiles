@@ -26,6 +26,7 @@ boot.blacklistedKernelModules = [ "snd_pcsp" ];
 
 #### VIDEO ####
   hardware.opengl = {
+    enable = true;
     driSupport = true;
     driSupport32Bit = true;
   };

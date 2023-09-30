@@ -43,6 +43,12 @@ nixpkgs.config.permittedInsecurePackages = [
   "electron-11.5.0" # For pkgs.itch
 ];
 
+programs.steam = {
+  enable = true;
+  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+};
+
 environment.variables = { EDITOR = "nvim"; };
 
 ## SERVICES

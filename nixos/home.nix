@@ -100,5 +100,11 @@ extraConfig = ''
         # MPV also available
         # TODO: Figure out terminal emulator
 
-      }
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "application/pdf" = ["org.pwmt.zathura-pdf-mupdf.desktop" "firefox.desktop"];
+    };
+  };
+}
 

@@ -1,14 +1,14 @@
 { config, pkgs, ... }:
 with pkgs;
 let
-  #unstable = import
-  #  (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/commit)
-  #  # reuse the current configuration
-  #  { config = config.nixpkgs.config; };        
-  #unstablePackages = import unstableTarball { config = pkgs.config; inherit system; };
+#  unstable = import
+#    (builtins.fetchTarball https://github.com/nixos/nixpkgs/tarball/commit)
+#    # reuse the current configuration
+#    { config = config.nixpkgs.config; };        
+#  unstablePackages = import unstableTarball { config = pkgs.config; inherit system; };
 #  unstable = import <nixpkgs-unstable> { config = { allowUnfree = true; }; };
-RStudio-with-packages = rstudioWrapper.override { packages = with rPackages; [ ggplot2 dplyr xts rmarkdown tinytex readxl Rcpp tidyverse]; };
-R-with-packages       = rWrapper.override       { packages = with rPackages; [ ggplot2 dplyr xts rmarkdown tinytex readxl Rcpp tidyverse]; };
+RStudio-with-packages = rstudioWrapper.override { packages = with rPackages; [ ggplot2 dplyr xts rmarkdown tinytex readxl Rcpp tidyverse ggbeeswarm]; };
+R-with-packages       = rWrapper.override       { packages = with rPackages; [ ggplot2 dplyr xts rmarkdown tinytex readxl Rcpp tidyverse ggbeeswarm]; };
 in
   {
 # Nix User Repository (NUR)
@@ -24,11 +24,17 @@ in
 ###############################################
     RStudio-with-packages
     R-with-packages
-    wxGTK32
+    dia # Diagrams for imndb
+
+    wxGTK32 #for charles
+
     cmake
     cmakeCurses
+
     unzip
     freetube
+
+    spotify
 
 
     # Wayland
@@ -87,7 +93,16 @@ in
     nix-index
     
 # Games
-    #unstable.openttd
+    openttd
+    simutrans
+    openrct2
+    endless-sky
+    freeciv_qt
+    #freeciv
+    unciv
+    widelands
+    pioneer
+    pioneers
     itch
     bsdgames
     gamehub
