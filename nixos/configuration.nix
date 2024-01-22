@@ -36,8 +36,8 @@ imports =
 # X11 window manager
 services.xserver.windowManager.bspwm = {
   enable = true;
-  #config-file = "$HOME/dotfiles/bspwm/bspwmrc";
-  #sxhkd.config = "$HOME/dotfiles/sxhkd/sxhkdrc";
+  config-file = "$HOME/dotfiles/bspwm/bspwmrc";
+  sxhkd.config = "$HOME/dotfiles/sxhkd/sxhkdrc";
 };
 
 nixpkgs.config.permittedInsecurePackages = [
@@ -60,4 +60,11 @@ environment.variables = { EDITOR = "nvim"; };
   services.udev.extraRules =
     ''ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", MODE="0666", RUN+="${pkgs.coreutils}/bin/chmod a+w /sys/class/backlight/%k/brightness"'';
   
+
+# SECURITY HOMEWORK
+  services.openssh.enable = true;
+  users.users.bob = {
+    isNormalUser = true;
+    #extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" "input" "docker" "dialout" "wireshark"]; 
+  }; 
 }

@@ -10,16 +10,12 @@ let
   '';
 in
 {
-  imports = [
-    ./opengl.nix
-  ];
-
   environment.systemPackages = [ nvidia-offload ];
 
   # make the backlight work
-  boot.extraModulePackages = [
-     config.boot.kernelPackages.nvidiabl
-  ];
+  #boot.extraModulePackages = [
+  #   config.boot.kernelPackages.nvidiabl
+  #];
 
   # These are probably only required if we pass
   # 'nvidia-drm.modeset=1' and modeset in the kernel cmdline on
@@ -40,10 +36,10 @@ in
     # anything.
     modesetting.enable = true;
     powerManagement = {
-      enable = true;
-      finegrained = true;
+      enable = false;
+      finegrained = false;
     };
-    nvidiaSettings = false; # C++ takes too long too compile
+    nvidiaSettings = true; # C++ takes too long too compile
     prime = {
       # sync.enable = true;
       # only either offload or sync, powermanagement requires offload

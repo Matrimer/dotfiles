@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 {
+  hardware.steam-hardware.enable = true; # controller
   programs.java.enable = true; 
   environment.systemPackages = with pkgs; [
     (steam.override { withJava = true; })

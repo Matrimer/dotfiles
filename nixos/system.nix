@@ -28,7 +28,9 @@ boot.blacklistedKernelModules = [ "snd_pcsp" ];
   hardware.opengl = {
     enable = true;
     driSupport = true;
+    extraPackages = with pkgs; [ libvdpau-va-gl vaapiVdpau intel-ocl ];
     driSupport32Bit = true;
+    extraPackages32 = with pkgs.driversi686Linux; [ glxinfo libvdpau-va-gl vaapiVdpau ];
   };
 
 

@@ -20,5 +20,5 @@
   
   # Bluetooth
   hardware.bluetooth.enable = true;
-  services.blueman.enable = false;
+  services.blueman.enable = true;
 }

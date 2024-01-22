@@ -26,6 +26,8 @@ in
     R-with-packages
     dia # Diagrams for imndb
 
+    libreoffice
+
     wxGTK32 #for charles
 
     cmake
@@ -41,6 +43,7 @@ in
     wl-clipboard
     ydotool
     grim #screenshot util
+    slurp # screen selection
     wbg # wayland background
     ## WAYBAR
     (waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true "]; }))
@@ -91,8 +94,14 @@ in
     mksh # MirBSD Korn Shell
     wev
     nix-index
-    
+    libqalculate
+
+    python3Full
+
 # Games
+    #steamcontroller
+    sc-controller
+
     openttd
     simutrans
     openrct2
@@ -106,6 +115,7 @@ in
     itch
     bsdgames
     gamehub
+    lutris
     boohu
     taisei
     gzdoom
