@@ -33,9 +33,19 @@ imports =
 #  enable = true;
 #  extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 #};
-# X11 window manager
-services.xserver.windowManager.bspwm = {
+
+# DWM
+services.xserver.windowManager.dwm = {
   enable = true;
+  package = pkgs.dwm.overrideAttrs {
+    src = "$HOME/dotfiles/src/dwm/dwm-6.4/";
+  };
+};
+
+
+# BSPWM
+services.xserver.windowManager.bspwm = {
+  enable = false;
   config-file = "$HOME/dotfiles/bspwm/bspwmrc";
   sxhkd.config = "$HOME/dotfiles/sxhkd/sxhkdrc";
 };
