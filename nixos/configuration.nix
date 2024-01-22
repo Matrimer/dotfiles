@@ -38,17 +38,17 @@ imports =
 services.xserver.windowManager.dwm = {
   enable = true;
   package = pkgs.dwm.overrideAttrs {
-    src = "$HOME/dotfiles/src/dwm/dwm-6.4/";
+    src = /home/mats/dotfiles/src/dwm/dwm-6.4;
   };
 };
 
 
 # BSPWM
-services.xserver.windowManager.bspwm = {
-  enable = false;
-  config-file = "$HOME/dotfiles/bspwm/bspwmrc";
-  sxhkd.config = "$HOME/dotfiles/sxhkd/sxhkdrc";
-};
+#services.xserver.windowManager.bspwm = {
+#  enable = true;
+#  config-file = "$HOME/dotfiles/bspwm/bspwmrc";
+#  sxhkd.config = "$HOME/dotfiles/sxhkd/sxhkdrc";
+#};
 
 nixpkgs.config.permittedInsecurePackages = [
   "electron-11.5.0" # For pkgs.itch
